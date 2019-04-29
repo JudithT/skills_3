@@ -1,0 +1,15 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Home page{% endblock %}
+
+{% block content %}
+
+<h1> UberMelon’s Most Loved Melons</h1>
+<form action='/get-name'>
+    What is your name: <input type="text" name="name" required><br>
+    <input type="submit" value="submit">   
+</form>
+
+{% endblock %}
