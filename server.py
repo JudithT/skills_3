@@ -57,15 +57,19 @@ def top_melons():
     return render_template("top-melons.html", username=username, melons=MOST_LOVED_MELONS)
 
 
-# @app.route('/love-melon', method=["POST"])
-# def love_melon():
-#     username=session.get("username")
-#     liked_melon = request.form.get('melon_option')
+@app.route('/love-melon', methods=["POST"])
+def love_melon():
+    username=session.get("username")
+    liked_melon = request.form.get('melon_option')
+    MOST_LOVED_MELONS[liked_melon]['num_loves'] += 1
+    return render_template("thank-you.html", username=username)
 
-#     return render_template("thank-you.html", username=username)
 
+@app.route('/logout')
+def logout():
+     session['username'] = None;
+     return redirect('/')
 
-# @app.route('/love-melon' )
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
